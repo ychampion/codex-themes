@@ -9,6 +9,10 @@ param(
 
     [string]$Repo = 'ychampion/codex-themes',
 
+    [string]$Theme,
+
+    [string]$StatusLine,
+
     [switch]$NoPathPersist,
 
     [switch]$NoPrompt,
@@ -160,6 +164,10 @@ function Resolve-InstallMode {
 }
 
 function Should-RunSetupInteractively {
+    if (-not [string]::IsNullOrWhiteSpace($Theme)) {
+        return $false
+    }
+
     if ($RunSetup) {
         return $true
     }
@@ -199,6 +207,23 @@ Add-ToPath
 
 Write-Step "Installed to $installedBinary"
 Write-Step 'You can now run codex-theme from this PowerShell window.'
+
+if (-not [string]::IsNullOrWhiteSpace($Theme)) {
+    $arguments = @('apply', $Theme)
+    if (-not [string]::IsNullOrWhiteSpace($StatusLine)) {
+        $arguments += @('--status-line', $StatusLine)
+    }
+    $message = "Applying theme $Theme"
+    if (-not [string]::IsNullOrWhiteSpace($StatusLine)) {
+        $message += " with status line $StatusLine"
+    }
+    Write-Step $message
+    & $installedBinary @arguments
+    if ($LASTEXITCODE -eq 0) {
+        Write-Step 'Done. Restart Codex to see the new footer/status line.'
+    }
+    exit $LASTEXITCODE
+}
 
 if (Should-RunSetupInteractively) {
     Write-Step 'Opening guided setup.'

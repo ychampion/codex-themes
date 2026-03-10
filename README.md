@@ -27,6 +27,18 @@ powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Source local -Ru
 
 That installs `codex-theme` into your user programs folder, adds it to your user `PATH`, and opens the guided theme picker immediately.
 
+If you want a direct one-command install + apply for a git-branch-only footer:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Source local -Theme tokyo-night -StatusLine branch-only
+```
+
+There is also a shorter wrapper from the repo root:
+
+```cmd
+.\install.cmd -Source local -Theme tokyo-night -StatusLine branch-only
+```
+
 ### From source
 
 ```bash
@@ -117,10 +129,22 @@ If you want a non-interactive version:
 codex-theme setup --theme amber-nocturne --status-line balanced
 ```
 
+If you only want the Git branch in the Codex footer:
+
+```bash
+codex-theme apply tokyo-night --status-line branch-only
+```
+
 If you are still in the repo and do not want to install globally yet, the immediate fallback is:
 
 ```powershell
 .\codex-theme.exe setup
+```
+
+Or from anywhere on Windows, without installing globally first:
+
+```powershell
+& "C:\Users\gamin\codex-themes\codex-theme.exe" apply tokyo-night --status-line branch-only
 ```
 
 ## How to verify it in Codex

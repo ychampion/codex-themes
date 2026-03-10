@@ -37,4 +37,11 @@ status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-use
 config_patch = { mode = "merge", path = "config/codex.toml" }
 ```
 
+Built-in presets currently include:
+
+- `branch-only`
+- `minimal`
+- `balanced`
+- `dense`
+
 

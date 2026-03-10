@@ -13,6 +13,9 @@ import (
 const DefaultStatusLinePreset = "balanced"
 
 var statusLinePresets = map[string][]string{
+	"branch-only": {
+		"git-branch",
+	},
 	"minimal": {
 		"model-name",
 		"current-dir",
