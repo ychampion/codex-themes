@@ -7,10 +7,12 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"time"
 
 	"github.com/pelletier/go-toml/v2"
 
+	"github.com/ychampion/codex-themes/internal/codex"
 	"github.com/ychampion/codex-themes/internal/export"
 	"github.com/ychampion/codex-themes/internal/theme"
 )
@@ -31,6 +33,7 @@ type Options struct {
 
 type ApplyOptions struct {
 	ExportFormats []ExportFormat
+	StatusLine    []string
 	BackupDir     string
 	DryRun        bool
 }
@@ -45,7 +48,14 @@ type State struct {
 	Appearance    string         `json:"appearance"`
 	AppliedAt     time.Time      `json:"applied_at"`
 	Backups       []string       `json:"backups"`
+	Codex         CodexState     `json:"codex"`
 	Exports       []ExportRecord `json:"exports"`
+}
+
+type CodexState struct {
+	ThemeName  string   `json:"theme_name"`
+	ThemePath  string   `json:"theme_path"`
+	StatusLine []string `json:"status_line"`
 }
 
 type ExportRecord struct {
@@ -84,6 +94,13 @@ func (m *Manager) Apply(manifest theme.Manifest, options ApplyOptions) (State, e
 	if err != nil {
 		return State{}, err
 	}
+	statusLine := codex.ResolveStatusLine(manifest, options.StatusLine)
+	state.Codex = CodexState{
+		ThemeName:  codex.ThemeName(manifest),
+		ThemePath:  codex.ThemePath(m.codexHome, manifest),
+		StatusLine: append([]string(nil), statusLine...),
+	}
+	mergeCodexConfig(config, state)
 	config["codex_themes"] = map[string]any{
 		"active":     manifest.ID,
 		"name":       manifest.Name,
@@ -91,9 +108,23 @@ func (m *Manager) Apply(manifest theme.Manifest, options ApplyOptions) (State, e
 		"family":     manifest.Family,
 		"version":    manifest.Version,
 		"applied_at": state.AppliedAt.Format(time.RFC3339),
+		"codex": map[string]any{
+			"theme":       state.Codex.ThemeName,
+			"theme_path":  state.Codex.ThemePath,
+			"status_line": state.Codex.StatusLine,
+		},
+	}
+	if strings.TrimSpace(manifest.Targets.Codex.ConfigPatch.Mode) != "" {
+		config["codex_themes"].(map[string]any)["config_patch"] = map[string]any{
+			"mode": manifest.Targets.Codex.ConfigPatch.Mode,
+			"path": manifest.Targets.Codex.ConfigPatch.Path,
+		}
 	}
 	if !options.DryRun {
 		if err := m.writeConfigMap(config); err != nil {
+			return State{}, err
+		}
+		if err := m.writeCodexTheme(manifest); err != nil {
 			return State{}, err
 		}
 	}
@@ -138,7 +169,7 @@ func (m *Manager) Rollback() error {
 		return err
 	}
 	return os.WriteFile(m.configPath(), bytes, 0o600)
-	}
+}
 
 func (m *Manager) statePath() string {
 	return filepath.Join(m.codexHome, "codex-themes", "state.json")
@@ -169,7 +200,7 @@ func (m *Manager) backupConfig(override string) (string, error) {
 		return "", err
 	}
 	return backupPath, nil
-	}
+}
 
 func (m *Manager) readConfigMap() (map[string]any, error) {
 	configPath := m.configPath()
@@ -188,7 +219,7 @@ func (m *Manager) readConfigMap() (map[string]any, error) {
 		config = map[string]any{}
 	}
 	return config, nil
-	}
+}
 
 func (m *Manager) writeConfigMap(config map[string]any) error {
 	bytes, err := toml.Marshal(config)
@@ -196,7 +227,7 @@ func (m *Manager) writeConfigMap(config map[string]any) error {
 		return err
 	}
 	return os.WriteFile(m.configPath(), bytes, 0o600)
-	}
+}
 
 func (m *Manager) writeExports(manifest theme.Manifest, formats []ExportFormat, dryRun bool) ([]ExportRecord, error) {
 	exportDir := filepath.Join(m.codexHome, "codex-themes", "exports", manifest.ID)
@@ -220,7 +251,19 @@ func (m *Manager) writeExports(manifest theme.Manifest, formats []ExportFormat, 
 		records = append(records, ExportRecord{Format: format, Path: path})
 	}
 	return records, nil
+}
+
+func (m *Manager) writeCodexTheme(manifest theme.Manifest) error {
+	themePath := codex.ThemePath(m.codexHome, manifest)
+	if err := os.MkdirAll(filepath.Dir(themePath), 0o755); err != nil {
+		return err
 	}
+	content, err := codex.RenderTMTheme(manifest)
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(themePath, content, 0o600)
+}
 
 func (m *Manager) writeState(state State) error {
 	stateDir := filepath.Dir(m.statePath())
@@ -232,7 +275,7 @@ func (m *Manager) writeState(state State) error {
 		return err
 	}
 	return os.WriteFile(m.statePath(), bytes, 0o600)
-	}
+}
 
 func defaultCodexHome() string {
 	home, err := os.UserHomeDir()
@@ -245,4 +288,17 @@ func defaultCodexHome() string {
 	return filepath.Join(home, ".codex")
 }
 
+func mergeCodexConfig(config map[string]any, state State) {
+	tui := ensureMap(config, "tui")
+	tui["theme"] = state.Codex.ThemeName
+	tui["status_line"] = append([]string(nil), state.Codex.StatusLine...)
+}
 
+func ensureMap(parent map[string]any, key string) map[string]any {
+	if existing, ok := parent[key].(map[string]any); ok {
+		return existing
+	}
+	created := map[string]any{}
+	parent[key] = created
+	return created
+}

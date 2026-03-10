@@ -10,6 +10,7 @@ import (
 
 	"github.com/spf13/cobra"
 
+	"github.com/ychampion/codex-themes/internal/codex"
 	"github.com/ychampion/codex-themes/internal/export"
 	"github.com/ychampion/codex-themes/internal/install"
 	"github.com/ychampion/codex-themes/internal/preview"
@@ -18,9 +19,9 @@ import (
 )
 
 type Options struct {
-	Stdout  io.Writer
-	Stderr  io.Writer
-	Version string
+	Stdout    io.Writer
+	Stderr    io.Writer
+	Version   string
 	ThemeDirs []string
 }
 
@@ -140,7 +141,7 @@ func NewRootCommand(options Options) *cobra.Command {
 
 	applyCommand := &cobra.Command{
 		Use:   "apply <theme>",
-		Short: "Apply a theme and update Codex metadata",
+		Short: "Apply a theme, install a Codex syntax theme, and update status line config",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			manifest, err := registry.Find(args[0], searchPaths(themeDirs))
@@ -153,16 +154,26 @@ func NewRootCommand(options Options) *cobra.Command {
 			if err != nil {
 				return err
 			}
+			statusLineOption, _ := cmd.Flags().GetString("status-line")
+			statusLine, err := resolveStatusLineOption(statusLineOption)
+			if err != nil {
+				return err
+			}
 			dryRun, _ := cmd.Flags().GetBool("dry-run")
-			state, err := manager.Apply(manifest, install.ApplyOptions{DryRun: dryRun, ExportFormats: formats})
+			state, err := manager.Apply(manifest, install.ApplyOptions{DryRun: dryRun, ExportFormats: formats, StatusLine: statusLine})
 			if err != nil {
 				return err
 			}
 			fmt.Fprintf(cmd.OutOrStdout(), "applied %s (%s) to %s\n", state.ActiveName, state.ActiveThemeID, manager.CodexHome())
+			fmt.Fprintf(cmd.OutOrStdout(), "codex tui: %s\n", state.Codex.ThemeName)
+			if len(state.Codex.StatusLine) > 0 {
+				fmt.Fprintf(cmd.OutOrStdout(), "status line: %s\n", strings.Join(state.Codex.StatusLine, ", "))
+			}
 			return nil
 		},
 	}
 	applyCommand.Flags().StringSlice("export-terminal", nil, "Export companion terminal files")
+	applyCommand.Flags().String("status-line", "", fmt.Sprintf("Status line preset (%s) or comma-separated item ids", strings.Join(codex.KnownStatusLinePresets(), ", ")))
 	applyCommand.Flags().Bool("dry-run", false, "Print intended changes without writing")
 	root.AddCommand(applyCommand)
 
@@ -175,6 +186,12 @@ func NewRootCommand(options Options) *cobra.Command {
 				return err
 			}
 			fmt.Fprintf(cmd.OutOrStdout(), "%s (%s) %s\n", state.ActiveName, state.ActiveThemeID, state.Appearance)
+			if state.Codex.ThemeName != "" {
+				fmt.Fprintf(cmd.OutOrStdout(), "codex theme\t%s\n", state.Codex.ThemeName)
+			}
+			if len(state.Codex.StatusLine) > 0 {
+				fmt.Fprintf(cmd.OutOrStdout(), "status line\t%s\n", strings.Join(state.Codex.StatusLine, ", "))
+			}
 			return nil
 		},
 	})
@@ -204,6 +221,17 @@ func NewRootCommand(options Options) *cobra.Command {
 			}
 			if state, err := manager.Current(); err == nil {
 				fmt.Fprintf(cmd.OutOrStdout(), "current\t%s (%s)\n", state.ActiveName, state.ActiveThemeID)
+				if state.Codex.ThemeName != "" {
+					fmt.Fprintf(cmd.OutOrStdout(), "codex_theme\t%s\n", state.Codex.ThemeName)
+					if _, err := os.Stat(state.Codex.ThemePath); err == nil {
+						fmt.Fprintf(cmd.OutOrStdout(), "codex_theme_file\tok (%s)\n", state.Codex.ThemePath)
+					} else {
+						fmt.Fprintf(cmd.OutOrStdout(), "codex_theme_file\tmissing (%v)\n", err)
+					}
+				}
+				if len(state.Codex.StatusLine) > 0 {
+					fmt.Fprintf(cmd.OutOrStdout(), "status_line\t%s\n", strings.Join(state.Codex.StatusLine, ", "))
+				}
 			} else {
 				fmt.Fprintf(cmd.OutOrStdout(), "current\tmissing (%v)\n", err)
 			}
@@ -231,7 +259,7 @@ func NewRootCommand(options Options) *cobra.Command {
 			if len(formats) == 0 {
 				formats = append(formats, install.ExportFormatGhostty)
 			}
-			if _, err := manager.Apply(manifest, install.ApplyOptions{ExportFormats: formats}); err != nil {
+			if _, err := manager.Apply(manifest, install.ApplyOptions{ExportFormats: formats, StatusLine: state.Codex.StatusLine}); err != nil {
 				return err
 			}
 			_, err = fmt.Fprintln(cmd.OutOrStdout(), "sync complete")
@@ -240,13 +268,13 @@ func NewRootCommand(options Options) *cobra.Command {
 	})
 
 	return root
-	}
+}
 
 func searchPaths(custom []string) []string {
 	paths := append([]string{}, custom...)
 	paths = append(paths, registry.DefaultSearchPaths()...)
 	return paths
-	}
+}
 
 func parseFormats(values []string) ([]install.ExportFormat, error) {
 	var formats []install.ExportFormat
@@ -263,5 +291,4 @@ func parseFormats(values []string) ([]install.ExportFormat, error) {
 		}
 	}
 	return formats, nil
-	}
-
+}

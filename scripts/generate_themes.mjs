@@ -315,7 +315,11 @@ function makeTheme({ id, name, family, appearance, description, tags, colors }) 
     tokens: Object.fromEntries(Object.entries(colors).filter(([key]) => key !== "ansi")),
     ansi: colors.ansi,
     targets: {
-      codex: { config_patch: { mode: "merge", path: "config/codex.toml" } },
+      codex: {
+        theme_name: `codex-themes-${id}`,
+        status_line: ["model-with-reasoning", "current-dir", "git-branch", "context-used", "fast-mode"],
+        config_patch: { mode: "merge", path: "config/codex.toml" }
+      },
       windows_terminal: { scheme_name: name },
       iterm2: { profile_name: name },
       ghostty: { theme_name: name },
@@ -356,7 +360,9 @@ function renderTheme(theme) {
     lines.push(`${key} = "${value}"`);
   }
 
-  lines.push("", "[targets.codex]", 'config_patch = { mode = "merge", path = "config/codex.toml" }');
+  lines.push("", "[targets.codex]", `theme_name = "codex-themes-${theme.id}"`);
+  lines.push('status_line = ["model-with-reasoning", "current-dir", "git-branch", "context-used", "fast-mode"]');
+  lines.push('config_patch = { mode = "merge", path = "config/codex.toml" }');
   lines.push("", "[targets.windows_terminal]", `scheme_name = "${theme.name}"`);
   lines.push("", "[targets.iterm2]", `profile_name = "${theme.name}"`);
   lines.push("", "[targets.ghostty]", `theme_name = "${theme.name}"`);

@@ -59,6 +59,11 @@
         "codex": {
           "type": "object",
           "properties": {
+            "theme_name": { "type": "string" },
+            "status_line": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
             "config_patch": {
               "type": "object",
               "properties": {

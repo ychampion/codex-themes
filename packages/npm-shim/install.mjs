@@ -1,4 +1,4 @@
-import { createWriteStream, existsSync, chmodSync } from "node:fs";
+import { createWriteStream, existsSync, chmodSync, unlinkSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -40,6 +40,10 @@ if (existsSync(binaryPath) && process.platform !== "win32") {
   chmodSync(binaryPath, 0o755);
 }
 
+if (existsSync(archivePath)) {
+  unlinkSync(archivePath);
+}
+
 function releaseAssetName(platform, arch) {
   const archMap = { x64: "x64", arm64: "arm64" };
   const mappedArch = archMap[arch];
@@ -56,14 +60,25 @@ function releaseAssetName(platform, arch) {
 function download(url, destination) {
   return new Promise((resolve, reject) => {
     const file = createWriteStream(destination);
-    get(url, (response) => {
-      if (response.statusCode && response.statusCode >= 400) {
-        reject(new Error(`download failed: ${response.statusCode} ${url}`));
-        return;
-      }
-      response.pipe(file);
-      file.on("finish", () => file.close(resolve));
-    }).on("error", reject);
+
+    const request = (currentUrl) => {
+      get(currentUrl, (response) => {
+        if (response.statusCode && response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+          request(response.headers.location);
+          return;
+        }
+
+        if (response.statusCode && response.statusCode >= 400) {
+          reject(new Error(`download failed: ${response.statusCode} ${currentUrl}`));
+          return;
+        }
+
+        response.pipe(file);
+        file.on("finish", () => file.close(resolve));
+      }).on("error", reject);
+    };
+
+    request(url);
   });
 }
 

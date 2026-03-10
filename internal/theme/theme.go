@@ -85,23 +85,23 @@ var requiredANSIKeys = []string{
 }
 
 type Manifest struct {
-	Schema          string         `toml:"schema" json:"schema"`
-	ID              string         `toml:"id" json:"id"`
-	Name            string         `toml:"name" json:"name"`
-	Family          string         `toml:"family" json:"family"`
-	Version         string         `toml:"version" json:"version"`
-	Appearance      string         `toml:"appearance" json:"appearance"`
-	Description     string         `toml:"description" json:"description"`
-	Author          string         `toml:"author" json:"author"`
-	License         string         `toml:"license" json:"license"`
-	Homepage        string         `toml:"homepage" json:"homepage"`
-	Tags            []string       `toml:"tags" json:"tags"`
-	CodexMinVersion string         `toml:"codex_min_version" json:"codex_min_version"`
-	Accessibility   Accessibility  `toml:"accessibility" json:"accessibility"`
+	Schema          string            `toml:"schema" json:"schema"`
+	ID              string            `toml:"id" json:"id"`
+	Name            string            `toml:"name" json:"name"`
+	Family          string            `toml:"family" json:"family"`
+	Version         string            `toml:"version" json:"version"`
+	Appearance      string            `toml:"appearance" json:"appearance"`
+	Description     string            `toml:"description" json:"description"`
+	Author          string            `toml:"author" json:"author"`
+	License         string            `toml:"license" json:"license"`
+	Homepage        string            `toml:"homepage" json:"homepage"`
+	Tags            []string          `toml:"tags" json:"tags"`
+	CodexMinVersion string            `toml:"codex_min_version" json:"codex_min_version"`
+	Accessibility   Accessibility     `toml:"accessibility" json:"accessibility"`
 	Tokens          map[string]string `toml:"tokens" json:"tokens"`
 	ANSI            map[string]string `toml:"ansi" json:"ansi"`
-	Targets         Targets        `toml:"targets" json:"targets"`
-	Metadata        Metadata       `toml:"-" json:"metadata"`
+	Targets         Targets           `toml:"targets" json:"targets"`
+	Metadata        Metadata          `toml:"-" json:"metadata"`
 }
 
 type Metadata struct {
@@ -125,6 +125,8 @@ type Targets struct {
 
 type CodexTarget struct {
 	ConfigPatch ConfigPatch `toml:"config_patch" json:"config_patch"`
+	ThemeName   string      `toml:"theme_name" json:"theme_name"`
+	StatusLine  []string    `toml:"status_line" json:"status_line"`
 }
 
 type ConfigPatch struct {
@@ -357,5 +359,3 @@ func linearize(value float64) float64 {
 	}
 	return math.Pow((value+0.055)/1.055, 2.4)
 }
-
-

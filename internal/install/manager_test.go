@@ -35,7 +35,7 @@ func TestApplyWritesManagedConfigStateAndBackup(t *testing.T) {
 		t.Fatalf("ReadFile(config) error = %v", err)
 	}
 	configText := string(configBytes)
-	for _, fragment := range []string{"model = ", "[codex_themes]", "active = 'amber-nocturne'", "appearance = 'dark'"} {
+	for _, fragment := range []string{"model = ", "[codex_themes]", "active = 'amber-nocturne'", "appearance = 'dark'", "[tui]", "theme = 'codex-themes-amber-nocturne'", "model-with-reasoning", "git-branch", "context-used"} {
 		if !strings.Contains(configText, fragment) {
 			t.Fatalf("config missing fragment %q\nconfig:\n%s", fragment, configText)
 		}
@@ -49,6 +49,24 @@ func TestApplyWritesManagedConfigStateAndBackup(t *testing.T) {
 	}
 	if len(state.Exports) != 2 {
 		t.Fatalf("len(Exports) = %d, want 2", len(state.Exports))
+	}
+	if state.Codex.ThemeName != "codex-themes-amber-nocturne" {
+		t.Fatalf("Codex.ThemeName = %q, want codex-themes-amber-nocturne", state.Codex.ThemeName)
+	}
+	if len(state.Codex.StatusLine) == 0 {
+		t.Fatalf("Codex.StatusLine should not be empty")
+	}
+
+	themePath := filepath.Join(codexHome, "themes", "codex-themes-amber-nocturne.tmTheme")
+	themeBytes, err := os.ReadFile(themePath)
+	if err != nil {
+		t.Fatalf("ReadFile(theme) error = %v", err)
+	}
+	themeText := string(themeBytes)
+	for _, fragment := range []string{"<key>name</key>", "Codex Themes / Amber Nocturne", "markup.inserted", "markup.deleted"} {
+		if !strings.Contains(themeText, fragment) {
+			t.Fatalf("theme missing fragment %q\ncontent:\n%s", fragment, themeText)
+		}
 	}
 
 	for _, backup := range state.Backups {
@@ -103,7 +121,7 @@ func mustInstallManifest(t *testing.T) theme.Manifest {
 		t.Fatalf("Load() error = %v", err)
 	}
 	return manifest
-	}
+}
 
 func validInstallManifest() string {
 	return `schema = "https://codexthemes.dev/schemas/theme.schema.json"
@@ -180,4 +198,3 @@ bright_cyan = "#86E2DF"
 bright_white = "#F8F3EC"
 `
 }
-

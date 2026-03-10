@@ -4,6 +4,11 @@
   "description": "Beautiful terminal identities, one command away.",
   "license": "MIT",
   "type": "module",
+  "files": [
+    "bin",
+    "install.mjs",
+    "package.json"
+  ],
   "bin": {
     "codex-theme": "bin/codex-theme.js"
   },

@@ -38,7 +38,18 @@ func TestSetupCommandAppliesThemeAndWindowsTerminal(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ReadFile(config) error = %v", err)
 	}
-	if !strings.Contains(string(configBytes), "[codex_themes]") {
+	configText := string(configBytes)
+	for _, fragment := range []string{"[codex_themes]", "[tui]", "theme = 'codex-themes-amber-nocturne'", "model-with-reasoning", "current-dir", "git-branch"} {
+		if !strings.Contains(configText, fragment) {
+			t.Fatalf("config missing fragment %q\nconfig:\n%s", fragment, configText)
+		}
+	}
+
+	if _, err := os.Stat(filepath.Join(codexHome, "themes", "codex-themes-amber-nocturne.tmTheme")); err != nil {
+		t.Fatalf("expected codex theme file: %v", err)
+	}
+
+	if !strings.Contains(configText, "[codex_themes]") {
 		t.Fatalf("config missing managed section\nconfig:\n%s", string(configBytes))
 	}
 
@@ -53,4 +64,3 @@ func TestSetupCommandAppliesThemeAndWindowsTerminal(t *testing.T) {
 		t.Fatalf("stdout missing success message\nstdout:\n%s", got)
 	}
 }
-

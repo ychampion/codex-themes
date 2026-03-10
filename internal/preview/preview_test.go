@@ -21,7 +21,7 @@ func TestRenderIncludesStatusMessagesAndBanners(t *testing.T) {
 		t.Fatalf("Render() error = %v", err)
 	}
 
-	for _, fragment := range []string{"Amber Nocturne", "gpt-5-codex", "/workspace/demo", "assistant", "user", "tool", "success", "warning", "error"} {
+	for _, fragment := range []string{"Amber Nocturne", "gpt-5-codex", "/workspace/demo", "AI", "YOU", "RUN", "OK", "WARN", "ERR", "CTX 42%"} {
 		if !strings.Contains(strings.ToLower(output), strings.ToLower(fragment)) {
 			t.Fatalf("Render() missing %q\noutput:\n%s", fragment, output)
 		}
@@ -103,5 +103,3 @@ bright_cyan = "#86E2DF"
 bright_white = "#F8F3EC"
 `
 }
-
-
