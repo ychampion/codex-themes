@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "one-dark-pro"
+name = "One Dark Pro"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "Balanced editor classic with dependable neutral contrast."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["one-dark", "editor", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#282C34"
+bg_secondary = "#2F343F"
+bg_tertiary = "#3A404B"
+bg_overlay = "#282C34CC"
+fg_primary = "#ABB2BF"
+fg_secondary = "#C8CCD4"
+fg_muted = "#7F8793"
+fg_inverse = "#0F1115"
+border = "#3A404B"
+border_subtle = "#2F343F"
+border_focus = "#61AFEF"
+accent_primary = "#61AFEF"
+accent_secondary = "#C678DD"
+accent_soft = "#324456"
+assistant_msg = "#61AFEF"
+user_msg = "#C678DD"
+tool_output = "#98C379"
+shell_stdout = "#C8CCD4"
+shell_stderr = "#E06C75"
+status_bg = "#2F343F"
+status_fg = "#ABB2BF"
+status_accent = "#61AFEF"
+input_bg = "#2D313B"
+input_fg = "#ABB2BF"
+input_placeholder = "#7F8793"
+selection_bg = "#43586F"
+selection_fg = "#ABB2BF"
+cursor = "#61AFEF"
+link = "#61AFEF"
+info = "#56B6C2"
+success = "#98C379"
+warning = "#E5C07B"
+error = "#E06C75"
+diff_add = "#98C379"
+diff_remove = "#E06C75"
+diff_change = "#E5C07B"
+code_inline = "#61AFEF"
+syntax_plain = "#ABB2BF"
+syntax_comment = "#7F8793"
+syntax_keyword = "#C678DD"
+syntax_string = "#98C379"
+syntax_number = "#E5C07B"
+syntax_function = "#61AFEF"
+syntax_type = "#56B6C2"
+syntax_variable = "#ABB2BF"
+syntax_operator = "#C678DD"
+
+[ansi]
+black = "#282C34"
+red = "#E06C75"
+green = "#98C379"
+yellow = "#E5C07B"
+blue = "#61AFEF"
+magenta = "#C678DD"
+cyan = "#56B6C2"
+white = "#ABB2BF"
+bright_black = "#575A61"
+bright_red = "#E47E86"
+bright_green = "#A4CA89"
+bright_yellow = "#E8C88B"
+bright_blue = "#74B9F1"
+bright_magenta = "#CD88E1"
+bright_cyan = "#6ABFC9"
+bright_white = "#B2B8C4"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "One Dark Pro"
+
+[targets.iterm2]
+profile_name = "One Dark Pro"
+
+[targets.ghostty]
+theme_name = "One Dark Pro"
+
+[targets.alacritty]
+theme_name = "One Dark Pro"
+

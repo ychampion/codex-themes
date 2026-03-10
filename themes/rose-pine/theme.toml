@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "rose-pine"
+name = "Rosé Pine"
+family = "modern"
+version = "1.0.0"
+appearance = "dark"
+description = "Muted mauve and pine tones for a calm premium coding surface."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["rose-pine", "mauve", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#191724"
+bg_secondary = "#1F1D2E"
+bg_tertiary = "#26233A"
+bg_overlay = "#191724CC"
+fg_primary = "#E0DEF4"
+fg_secondary = "#C4A7E7"
+fg_muted = "#908CAA"
+fg_inverse = "#0F1115"
+border = "#26233A"
+border_subtle = "#1F1D2E"
+border_focus = "#9CCFD8"
+accent_primary = "#9CCFD8"
+accent_secondary = "#EBBCBA"
+accent_soft = "#313844"
+assistant_msg = "#6E94B2"
+user_msg = "#C4A7E7"
+tool_output = "#31748F"
+shell_stdout = "#C4A7E7"
+shell_stderr = "#EB6F92"
+status_bg = "#1F1D2E"
+status_fg = "#E0DEF4"
+status_accent = "#9CCFD8"
+input_bg = "#1D1B2B"
+input_fg = "#E0DEF4"
+input_placeholder = "#908CAA"
+selection_bg = "#40495D"
+selection_fg = "#E0DEF4"
+cursor = "#9CCFD8"
+link = "#6E94B2"
+info = "#9CCFD8"
+success = "#31748F"
+warning = "#F6C177"
+error = "#EB6F92"
+diff_add = "#31748F"
+diff_remove = "#EB6F92"
+diff_change = "#F6C177"
+code_inline = "#6E94B2"
+syntax_plain = "#E0DEF4"
+syntax_comment = "#908CAA"
+syntax_keyword = "#C4A7E7"
+syntax_string = "#31748F"
+syntax_number = "#F6C177"
+syntax_function = "#6E94B2"
+syntax_type = "#9CCFD8"
+syntax_variable = "#E0DEF4"
+syntax_operator = "#EBBCBA"
+
+[ansi]
+black = "#191724"
+red = "#EB6F92"
+green = "#31748F"
+yellow = "#F6C177"
+blue = "#6E94B2"
+magenta = "#C4A7E7"
+cyan = "#9CCFD8"
+white = "#E0DEF4"
+bright_black = "#4C4A54"
+bright_red = "#ED809F"
+bright_green = "#4A859C"
+bright_yellow = "#F7C887"
+bright_blue = "#7FA1BB"
+bright_magenta = "#CBB2EA"
+bright_cyan = "#A8D5DD"
+bright_white = "#E2E1F5"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Rosé Pine"
+
+[targets.iterm2]
+profile_name = "Rosé Pine"
+
+[targets.ghostty]
+theme_name = "Rosé Pine"
+
+[targets.alacritty]
+theme_name = "Rosé Pine"
+

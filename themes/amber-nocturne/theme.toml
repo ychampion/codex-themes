@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "amber-nocturne"
+name = "Amber Nocturne"
+family = "signature"
+version = "1.0.0"
+appearance = "dark"
+description = "Warm premium amber theme designed specifically for long coding sessions."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["amber", "premium", "warm", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#12110F"
+bg_secondary = "#191714"
+bg_tertiary = "#211D18"
+bg_overlay = "#12110FCC"
+fg_primary = "#F6F1E8"
+fg_secondary = "#E7DDCF"
+fg_muted = "#B8AFA2"
+fg_inverse = "#0F1115"
+border = "#211D18"
+border_subtle = "#191714"
+border_focus = "#D6A24A"
+accent_primary = "#D6A24A"
+accent_secondary = "#C97A2B"
+accent_soft = "#352B1A"
+assistant_msg = "#80BFFF"
+user_msg = "#E2A7FF"
+tool_output = "#78C26D"
+shell_stdout = "#E7DDCF"
+shell_stderr = "#EA6D5D"
+status_bg = "#191714"
+status_fg = "#F6F1E8"
+status_accent = "#D6A24A"
+input_bg = "#171512"
+input_fg = "#F6F1E8"
+input_placeholder = "#B8AFA2"
+selection_bg = "#493A23"
+selection_fg = "#F6F1E8"
+cursor = "#D6A24A"
+link = "#80BFFF"
+info = "#63D2CF"
+success = "#78C26D"
+warning = "#E2A84B"
+error = "#EA6D5D"
+diff_add = "#78C26D"
+diff_remove = "#EA6D5D"
+diff_change = "#E2A84B"
+code_inline = "#80BFFF"
+syntax_plain = "#F6F1E8"
+syntax_comment = "#B8AFA2"
+syntax_keyword = "#E2A7FF"
+syntax_string = "#78C26D"
+syntax_number = "#E2A84B"
+syntax_function = "#80BFFF"
+syntax_type = "#63D2CF"
+syntax_variable = "#F6F1E8"
+syntax_operator = "#C97A2B"
+
+[ansi]
+black = "#12110F"
+red = "#EA6D5D"
+green = "#78C26D"
+yellow = "#E2A84B"
+blue = "#80BFFF"
+magenta = "#E2A7FF"
+cyan = "#63D2CF"
+white = "#F6F1E8"
+bright_black = "#464544"
+bright_red = "#ED7F70"
+bright_green = "#88C97F"
+bright_yellow = "#E5B261"
+bright_blue = "#8FC7FF"
+bright_magenta = "#E5B2FF"
+bright_cyan = "#76D7D5"
+bright_white = "#F7F2EA"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Amber Nocturne"
+
+[targets.iterm2]
+profile_name = "Amber Nocturne"
+
+[targets.ghostty]
+theme_name = "Amber Nocturne"
+
+[targets.alacritty]
+theme_name = "Amber Nocturne"
+

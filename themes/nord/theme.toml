@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "nord"
+name = "Nord"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "Cool arctic blues with understated contrast and crisp structure."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["nord", "arctic", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#2E3440"
+bg_secondary = "#3B4252"
+bg_tertiary = "#434C5E"
+bg_overlay = "#2E3440CC"
+fg_primary = "#ECEFF4"
+fg_secondary = "#E5E9F0"
+fg_muted = "#A3B1C6"
+fg_inverse = "#0F1115"
+border = "#434C5E"
+border_subtle = "#3B4252"
+border_focus = "#88C0D0"
+accent_primary = "#88C0D0"
+accent_secondary = "#81A1C1"
+accent_soft = "#3E4D5A"
+assistant_msg = "#5E81AC"
+user_msg = "#B48EAD"
+tool_output = "#A3BE8C"
+shell_stdout = "#E5E9F0"
+shell_stderr = "#BF616A"
+status_bg = "#3B4252"
+status_fg = "#ECEFF4"
+status_accent = "#88C0D0"
+input_bg = "#363D4C"
+input_fg = "#ECEFF4"
+input_placeholder = "#A3B1C6"
+selection_bg = "#526677"
+selection_fg = "#ECEFF4"
+cursor = "#88C0D0"
+link = "#5E81AC"
+info = "#8FBCBB"
+success = "#A3BE8C"
+warning = "#EBCB8B"
+error = "#BF616A"
+diff_add = "#A3BE8C"
+diff_remove = "#BF616A"
+diff_change = "#EBCB8B"
+code_inline = "#5E81AC"
+syntax_plain = "#ECEFF4"
+syntax_comment = "#A3B1C6"
+syntax_keyword = "#B48EAD"
+syntax_string = "#A3BE8C"
+syntax_number = "#EBCB8B"
+syntax_function = "#5E81AC"
+syntax_type = "#8FBCBB"
+syntax_variable = "#ECEFF4"
+syntax_operator = "#81A1C1"
+
+[ansi]
+black = "#2E3440"
+red = "#BF616A"
+green = "#A3BE8C"
+yellow = "#EBCB8B"
+blue = "#5E81AC"
+magenta = "#B48EAD"
+cyan = "#8FBCBB"
+white = "#ECEFF4"
+bright_black = "#5C616A"
+bright_red = "#C7747C"
+bright_green = "#AEC69A"
+bright_yellow = "#EDD199"
+bright_blue = "#7190B6"
+bright_magenta = "#BD9CB7"
+bright_cyan = "#9CC4C3"
+bright_white = "#EEF0F5"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Nord"
+
+[targets.iterm2]
+profile_name = "Nord"
+
+[targets.ghostty]
+theme_name = "Nord"
+
+[targets.alacritty]
+theme_name = "Nord"
+

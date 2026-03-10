@@ -1,0 +1,22 @@
+{
+  "name": "codex-theme",
+  "version": "0.1.0",
+  "description": "Beautiful terminal identities, one command away.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "codex-theme": "bin/codex-theme.js"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "tar": "^7.4.3"
+  },
+  "scripts": {
+    "postinstall": "node ./install.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ychampion/codex-themes.git"
+  }
+}
+

@@ -1,0 +1,184 @@
+[
+  {
+    "id": "amber-nocturne",
+    "name": "Amber Nocturne",
+    "family": "signature",
+    "appearance": "dark",
+    "description": "Warm premium amber theme designed specifically for long coding sessions.",
+    "tags": [
+      "amber",
+      "premium",
+      "warm",
+      "dark"
+    ]
+  },
+  {
+    "id": "dracula",
+    "name": "Dracula",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "Punchy purple-pink neon contrast with readable violet surfaces.",
+    "tags": [
+      "dracula",
+      "purple",
+      "dark"
+    ]
+  },
+  {
+    "id": "nord",
+    "name": "Nord",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "Cool arctic blues with understated contrast and crisp structure.",
+    "tags": [
+      "nord",
+      "arctic",
+      "dark"
+    ]
+  },
+  {
+    "id": "catppuccin-mocha",
+    "name": "Catppuccin Mocha",
+    "family": "modern",
+    "appearance": "dark",
+    "description": "Soft dessert-like dark palette with polished pastel accents.",
+    "tags": [
+      "catppuccin",
+      "mocha",
+      "pastel"
+    ]
+  },
+  {
+    "id": "catppuccin-latte",
+    "name": "Catppuccin Latte",
+    "family": "modern",
+    "appearance": "light",
+    "description": "Creamy light palette with pastel accents and strong readability.",
+    "tags": [
+      "catppuccin",
+      "latte",
+      "light"
+    ]
+  },
+  {
+    "id": "tokyo-night",
+    "name": "Tokyo Night",
+    "family": "modern",
+    "appearance": "dark",
+    "description": "Deep midnight blues with vibrant cyber accents and balanced contrast.",
+    "tags": [
+      "tokyo-night",
+      "blue",
+      "dark"
+    ]
+  },
+  {
+    "id": "gruvbox-dark",
+    "name": "Gruvbox Dark",
+    "family": "retro",
+    "appearance": "dark",
+    "description": "Warm retro earth tones with strong terminal heritage.",
+    "tags": [
+      "gruvbox",
+      "retro",
+      "dark"
+    ]
+  },
+  {
+    "id": "rose-pine",
+    "name": "Rosé Pine",
+    "family": "modern",
+    "appearance": "dark",
+    "description": "Muted mauve and pine tones for a calm premium coding surface.",
+    "tags": [
+      "rose-pine",
+      "mauve",
+      "dark"
+    ]
+  },
+  {
+    "id": "everforest",
+    "name": "Everforest",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "Forest-inspired green neutrals with gentle contrast and low glare.",
+    "tags": [
+      "everforest",
+      "green",
+      "dark"
+    ]
+  },
+  {
+    "id": "monokai-pro",
+    "name": "Monokai Pro",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "High-energy Monokai lineage with premium balanced saturation.",
+    "tags": [
+      "monokai",
+      "pro",
+      "dark"
+    ]
+  },
+  {
+    "id": "one-dark-pro",
+    "name": "One Dark Pro",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "Balanced editor classic with dependable neutral contrast.",
+    "tags": [
+      "one-dark",
+      "editor",
+      "dark"
+    ]
+  },
+  {
+    "id": "kanagawa",
+    "name": "Kanagawa",
+    "family": "modern",
+    "appearance": "dark",
+    "description": "Ink-wash inspired Japanese palette with elegant subdued contrast.",
+    "tags": [
+      "kanagawa",
+      "ink",
+      "dark"
+    ]
+  },
+  {
+    "id": "cyberpunk",
+    "name": "Cyberpunk",
+    "family": "experimental",
+    "appearance": "dark",
+    "description": "Neon magenta and cyan over pitch-black surfaces for dramatic sessions.",
+    "tags": [
+      "cyberpunk",
+      "neon",
+      "dark"
+    ]
+  },
+  {
+    "id": "solarized-dark",
+    "name": "Solarized Dark",
+    "family": "classic",
+    "appearance": "dark",
+    "description": "Classic low-contrast precision palette tuned for long-form reading.",
+    "tags": [
+      "solarized",
+      "dark",
+      "classic"
+    ]
+  },
+  {
+    "id": "solarized-light",
+    "name": "Solarized Light",
+    "family": "classic",
+    "appearance": "light",
+    "description": "Well-known paper-like light palette with precise muted accents.",
+    "tags": [
+      "solarized",
+      "light",
+      "classic"
+    ]
+  }
+]
+

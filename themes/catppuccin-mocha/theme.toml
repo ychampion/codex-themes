@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "catppuccin-mocha"
+name = "Catppuccin Mocha"
+family = "modern"
+version = "1.0.0"
+appearance = "dark"
+description = "Soft dessert-like dark palette with polished pastel accents."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["catppuccin", "mocha", "pastel"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#1E1E2E"
+bg_secondary = "#252538"
+bg_tertiary = "#313244"
+bg_overlay = "#1E1E2ECC"
+fg_primary = "#CDD6F4"
+fg_secondary = "#BAC2DE"
+fg_muted = "#9399B2"
+fg_inverse = "#0F1115"
+border = "#313244"
+border_subtle = "#252538"
+border_focus = "#89B4FA"
+accent_primary = "#89B4FA"
+accent_secondary = "#F5C2E7"
+accent_soft = "#313953"
+assistant_msg = "#89B4FA"
+user_msg = "#CBA6F7"
+tool_output = "#A6E3A1"
+shell_stdout = "#BAC2DE"
+shell_stderr = "#F38BA8"
+status_bg = "#252538"
+status_fg = "#CDD6F4"
+status_accent = "#89B4FA"
+input_bg = "#232335"
+input_fg = "#CDD6F4"
+input_placeholder = "#9399B2"
+selection_bg = "#444F6C"
+selection_fg = "#CDD6F4"
+cursor = "#89B4FA"
+link = "#89B4FA"
+info = "#94E2D5"
+success = "#A6E3A1"
+warning = "#F9E2AF"
+error = "#F38BA8"
+diff_add = "#A6E3A1"
+diff_remove = "#F38BA8"
+diff_change = "#F9E2AF"
+code_inline = "#89B4FA"
+syntax_plain = "#CDD6F4"
+syntax_comment = "#9399B2"
+syntax_keyword = "#CBA6F7"
+syntax_string = "#A6E3A1"
+syntax_number = "#F9E2AF"
+syntax_function = "#89B4FA"
+syntax_type = "#94E2D5"
+syntax_variable = "#CDD6F4"
+syntax_operator = "#F5C2E7"
+
+[ansi]
+black = "#1E1E2E"
+red = "#F38BA8"
+green = "#A6E3A1"
+yellow = "#F9E2AF"
+blue = "#89B4FA"
+magenta = "#CBA6F7"
+cyan = "#94E2D5"
+white = "#CDD6F4"
+bright_black = "#50505C"
+bright_red = "#F499B2"
+bright_green = "#B1E6AC"
+bright_yellow = "#FAE5B9"
+bright_blue = "#97BDFB"
+bright_magenta = "#D1B1F8"
+bright_cyan = "#A1E5DA"
+bright_white = "#D1D9F5"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Catppuccin Mocha"
+
+[targets.iterm2]
+profile_name = "Catppuccin Mocha"
+
+[targets.ghostty]
+theme_name = "Catppuccin Mocha"
+
+[targets.alacritty]
+theme_name = "Catppuccin Mocha"
+

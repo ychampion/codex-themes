@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "monokai-pro"
+name = "Monokai Pro"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "High-energy Monokai lineage with premium balanced saturation."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["monokai", "pro", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#2D2A2E"
+bg_secondary = "#363338"
+bg_tertiary = "#403E41"
+bg_overlay = "#2D2A2ECC"
+fg_primary = "#FCFCFA"
+fg_secondary = "#F0EEE9"
+fg_muted = "#A59FA1"
+fg_inverse = "#0F1115"
+border = "#403E41"
+border_subtle = "#363338"
+border_focus = "#FFD866"
+accent_primary = "#FFD866"
+accent_secondary = "#AB9DF2"
+accent_soft = "#534938"
+assistant_msg = "#78DCE8"
+user_msg = "#AB9DF2"
+tool_output = "#A9DC76"
+shell_stdout = "#F0EEE9"
+shell_stderr = "#FF6188"
+status_bg = "#363338"
+status_fg = "#FCFCFA"
+status_accent = "#FFD866"
+input_bg = "#333035"
+input_fg = "#FCFCFA"
+input_placeholder = "#A59FA1"
+selection_bg = "#6A6049"
+selection_fg = "#FCFCFA"
+cursor = "#FFD866"
+link = "#78DCE8"
+info = "#78DCE8"
+success = "#A9DC76"
+warning = "#FFD866"
+error = "#FF6188"
+diff_add = "#A9DC76"
+diff_remove = "#FF6188"
+diff_change = "#FFD866"
+code_inline = "#78DCE8"
+syntax_plain = "#FCFCFA"
+syntax_comment = "#A59FA1"
+syntax_keyword = "#AB9DF2"
+syntax_string = "#A9DC76"
+syntax_number = "#FFD866"
+syntax_function = "#78DCE8"
+syntax_type = "#78DCE8"
+syntax_variable = "#FCFCFA"
+syntax_operator = "#AB9DF2"
+
+[ansi]
+black = "#2D2A2E"
+red = "#FF6188"
+green = "#A9DC76"
+yellow = "#FFD866"
+blue = "#78DCE8"
+magenta = "#AB9DF2"
+cyan = "#78DCE8"
+white = "#FCFCFA"
+bright_black = "#5B595C"
+bright_red = "#FF7496"
+bright_green = "#B3E086"
+bright_yellow = "#FFDD78"
+bright_blue = "#88E0EB"
+bright_magenta = "#B5A9F4"
+bright_cyan = "#88E0EB"
+bright_white = "#FCFCFA"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Monokai Pro"
+
+[targets.iterm2]
+profile_name = "Monokai Pro"
+
+[targets.ghostty]
+theme_name = "Monokai Pro"
+
+[targets.alacritty]
+theme_name = "Monokai Pro"
+

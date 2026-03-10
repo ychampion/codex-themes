@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "solarized-dark"
+name = "Solarized Dark"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "Classic low-contrast precision palette tuned for long-form reading."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["solarized", "dark", "classic"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#002B36"
+bg_secondary = "#073642"
+bg_tertiary = "#0A4755"
+bg_overlay = "#002B36CC"
+fg_primary = "#93A1A1"
+fg_secondary = "#EEE8D5"
+fg_muted = "#657B83"
+fg_inverse = "#0F1115"
+border = "#0A4755"
+border_subtle = "#073642"
+border_focus = "#268BD2"
+accent_primary = "#268BD2"
+accent_secondary = "#2AA198"
+accent_soft = "#073C52"
+assistant_msg = "#268BD2"
+user_msg = "#6C71C4"
+tool_output = "#859900"
+shell_stdout = "#EEE8D5"
+shell_stderr = "#DC322F"
+status_bg = "#073642"
+status_fg = "#93A1A1"
+status_accent = "#268BD2"
+input_bg = "#05323E"
+input_fg = "#93A1A1"
+input_placeholder = "#657B83"
+selection_bg = "#105671"
+selection_fg = "#93A1A1"
+cursor = "#268BD2"
+link = "#268BD2"
+info = "#2AA198"
+success = "#859900"
+warning = "#B58900"
+error = "#DC322F"
+diff_add = "#859900"
+diff_remove = "#DC322F"
+diff_change = "#B58900"
+code_inline = "#268BD2"
+syntax_plain = "#93A1A1"
+syntax_comment = "#657B83"
+syntax_keyword = "#6C71C4"
+syntax_string = "#859900"
+syntax_number = "#B58900"
+syntax_function = "#268BD2"
+syntax_type = "#2AA198"
+syntax_variable = "#93A1A1"
+syntax_operator = "#2AA198"
+
+[ansi]
+black = "#002B36"
+red = "#DC322F"
+green = "#859900"
+yellow = "#B58900"
+blue = "#268BD2"
+magenta = "#6C71C4"
+cyan = "#2AA198"
+white = "#93A1A1"
+bright_black = "#385A62"
+bright_red = "#E04B48"
+bright_green = "#94A51F"
+bright_yellow = "#BE971F"
+bright_blue = "#4099D7"
+bright_magenta = "#7E82CB"
+bright_cyan = "#44ACA4"
+bright_white = "#9CA9A9"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Solarized Dark"
+
+[targets.iterm2]
+profile_name = "Solarized Dark"
+
+[targets.ghostty]
+theme_name = "Solarized Dark"
+
+[targets.alacritty]
+theme_name = "Solarized Dark"
+

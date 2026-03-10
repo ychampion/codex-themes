@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "everforest"
+name = "Everforest"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "Forest-inspired green neutrals with gentle contrast and low glare."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["everforest", "green", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#2B3339"
+bg_secondary = "#323C41"
+bg_tertiary = "#3A464C"
+bg_overlay = "#2B3339CC"
+fg_primary = "#D3C6AA"
+fg_secondary = "#E1D8C3"
+fg_muted = "#9DA9A0"
+fg_inverse = "#0F1115"
+border = "#3A464C"
+border_subtle = "#323C41"
+border_focus = "#A7C080"
+accent_primary = "#A7C080"
+accent_secondary = "#DBBC7F"
+accent_soft = "#414C46"
+assistant_msg = "#7FBBB3"
+user_msg = "#D699B6"
+tool_output = "#A7C080"
+shell_stdout = "#E1D8C3"
+shell_stderr = "#E67E80"
+status_bg = "#323C41"
+status_fg = "#D3C6AA"
+status_accent = "#A7C080"
+input_bg = "#30393E"
+input_fg = "#D3C6AA"
+input_placeholder = "#9DA9A0"
+selection_bg = "#526157"
+selection_fg = "#D3C6AA"
+cursor = "#A7C080"
+link = "#7FBBB3"
+info = "#83C092"
+success = "#A7C080"
+warning = "#DBBC7F"
+error = "#E67E80"
+diff_add = "#A7C080"
+diff_remove = "#E67E80"
+diff_change = "#DBBC7F"
+code_inline = "#7FBBB3"
+syntax_plain = "#D3C6AA"
+syntax_comment = "#9DA9A0"
+syntax_keyword = "#D699B6"
+syntax_string = "#A7C080"
+syntax_number = "#DBBC7F"
+syntax_function = "#7FBBB3"
+syntax_type = "#83C092"
+syntax_variable = "#D3C6AA"
+syntax_operator = "#DBBC7F"
+
+[ansi]
+black = "#2B3339"
+red = "#E67E80"
+green = "#A7C080"
+yellow = "#DBBC7F"
+blue = "#7FBBB3"
+magenta = "#D699B6"
+cyan = "#83C092"
+white = "#D3C6AA"
+bright_black = "#5A6065"
+bright_red = "#E98D8F"
+bright_green = "#B2C88F"
+bright_yellow = "#DFC48E"
+bright_blue = "#8EC3BC"
+bright_magenta = "#DBA5BF"
+bright_cyan = "#92C89F"
+bright_white = "#D7CBB1"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Everforest"
+
+[targets.iterm2]
+profile_name = "Everforest"
+
+[targets.ghostty]
+theme_name = "Everforest"
+
+[targets.alacritty]
+theme_name = "Everforest"
+

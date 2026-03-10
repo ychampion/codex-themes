@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "tokyo-night"
+name = "Tokyo Night"
+family = "modern"
+version = "1.0.0"
+appearance = "dark"
+description = "Deep midnight blues with vibrant cyber accents and balanced contrast."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["tokyo-night", "blue", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#1A1B26"
+bg_secondary = "#1F2335"
+bg_tertiary = "#24283B"
+bg_overlay = "#1A1B26CC"
+fg_primary = "#C0CAF5"
+fg_secondary = "#A9B1D6"
+fg_muted = "#7A88CF"
+fg_inverse = "#0F1115"
+border = "#24283B"
+border_subtle = "#1F2335"
+border_focus = "#7AA2F7"
+accent_primary = "#7AA2F7"
+accent_secondary = "#BB9AF7"
+accent_soft = "#2B334C"
+assistant_msg = "#7AA2F7"
+user_msg = "#BB9AF7"
+tool_output = "#9ECE6A"
+shell_stdout = "#A9B1D6"
+shell_stderr = "#F7768E"
+status_bg = "#1F2335"
+status_fg = "#C0CAF5"
+status_accent = "#7AA2F7"
+input_bg = "#1D2030"
+input_fg = "#C0CAF5"
+input_placeholder = "#7A88CF"
+selection_bg = "#374364"
+selection_fg = "#C0CAF5"
+cursor = "#7AA2F7"
+link = "#7AA2F7"
+info = "#7DCFFF"
+success = "#9ECE6A"
+warning = "#E0AF68"
+error = "#F7768E"
+diff_add = "#9ECE6A"
+diff_remove = "#F7768E"
+diff_change = "#E0AF68"
+code_inline = "#7AA2F7"
+syntax_plain = "#C0CAF5"
+syntax_comment = "#7A88CF"
+syntax_keyword = "#BB9AF7"
+syntax_string = "#9ECE6A"
+syntax_number = "#E0AF68"
+syntax_function = "#7AA2F7"
+syntax_type = "#7DCFFF"
+syntax_variable = "#C0CAF5"
+syntax_operator = "#BB9AF7"
+
+[ansi]
+black = "#1A1B26"
+red = "#F7768E"
+green = "#9ECE6A"
+yellow = "#E0AF68"
+blue = "#7AA2F7"
+magenta = "#BB9AF7"
+cyan = "#7DCFFF"
+white = "#C0CAF5"
+bright_black = "#4C4D56"
+bright_red = "#F8869C"
+bright_green = "#AAD47C"
+bright_yellow = "#E4B97A"
+bright_blue = "#8AADF8"
+bright_magenta = "#C3A6F8"
+bright_cyan = "#8DD5FF"
+bright_white = "#C5CEF6"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Tokyo Night"
+
+[targets.iterm2]
+profile_name = "Tokyo Night"
+
+[targets.ghostty]
+theme_name = "Tokyo Night"
+
+[targets.alacritty]
+theme_name = "Tokyo Night"
+

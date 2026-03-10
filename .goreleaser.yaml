@@ -1,0 +1,38 @@
+version: 2
+
+project_name: codex-theme
+
+builds:
+  - id: codex-theme
+    main: ./cmd/codex-theme
+    binary: codex-theme
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: default
+    formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    name_template: >-
+      {{ .ProjectName }}_{{ .Os }}_{{ if eq .Arch "amd64" }}x64{{ else if eq .Arch "arm64" }}arm64{{ else }}{{ .Arch }}{{ end }}
+
+checksum:
+  name_template: checksums.txt
+
+release:
+  github:
+    owner: ychampion
+    name: codex-themes
+
+

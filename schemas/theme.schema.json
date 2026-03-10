@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codexthemes.dev/schemas/theme.schema.json",
+  "title": "Codex Themes Manifest",
+  "type": "object",
+  "required": ["id", "name", "family", "version", "appearance", "tokens", "ansi"],
+  "properties": {
+    "schema": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "family": {
+      "type": "string",
+      "enum": ["signature", "classic", "modern", "retro", "experimental", "community"]
+    },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+].*)?$" },
+    "appearance": { "type": "string", "enum": ["dark", "light"] },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "license": { "type": "string" },
+    "homepage": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "codex_min_version": { "type": "string" },
+    "accessibility": {
+      "type": "object",
+      "properties": {
+        "min_contrast_body": { "type": "number", "minimum": 1 },
+        "min_contrast_ui": { "type": "number", "minimum": 1 },
+        "color_blind_safe": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "tokens": {
+      "type": "object",
+      "required": [
+        "bg_primary", "bg_secondary", "bg_tertiary", "bg_overlay", "fg_primary", "fg_secondary", "fg_muted", "fg_inverse",
+        "border", "border_subtle", "border_focus", "accent_primary", "accent_secondary", "accent_soft", "assistant_msg", "user_msg",
+        "tool_output", "shell_stdout", "shell_stderr", "status_bg", "status_fg", "status_accent", "input_bg", "input_fg",
+        "input_placeholder", "selection_bg", "selection_fg", "cursor", "link", "info", "success", "warning", "error",
+        "diff_add", "diff_remove", "diff_change", "code_inline", "syntax_plain", "syntax_comment", "syntax_keyword", "syntax_string",
+        "syntax_number", "syntax_function", "syntax_type", "syntax_variable", "syntax_operator"
+      ],
+      "propertyNames": { "pattern": "^[a-z0-9_]+$" },
+      "additionalProperties": { "$ref": "#/$defs/color" }
+    },
+    "ansi": {
+      "type": "object",
+      "required": [
+        "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white",
+        "bright_black", "bright_red", "bright_green", "bright_yellow", "bright_blue", "bright_magenta", "bright_cyan", "bright_white"
+      ],
+      "additionalProperties": { "$ref": "#/$defs/color" }
+    },
+    "targets": {
+      "type": "object",
+      "properties": {
+        "codex": {
+          "type": "object",
+          "properties": {
+            "config_patch": {
+              "type": "object",
+              "properties": {
+                "mode": { "type": "string" },
+                "path": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "windows_terminal": {
+          "type": "object",
+          "properties": {
+            "scheme_name": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "iterm2": {
+          "type": "object",
+          "properties": {
+            "profile_name": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "ghostty": {
+          "type": "object",
+          "properties": {
+            "theme_name": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "alacritty": {
+          "type": "object",
+          "properties": {
+            "theme_name": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$"
+    }
+  }
+}
+
+

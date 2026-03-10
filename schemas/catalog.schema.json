@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codexthemes.dev/schemas/catalog.schema.json",
+  "title": "Codex Themes catalog",
+  "type": "object",
+  "required": ["version", "themes"],
+  "properties": {
+    "version": { "type": "string" },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "appearance", "family"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "appearance": { "type": "string" },
+          "family": { "type": "string" },
+          "description": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
+
+

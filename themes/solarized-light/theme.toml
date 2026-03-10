@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "solarized-light"
+name = "Solarized Light"
+family = "classic"
+version = "1.0.0"
+appearance = "light"
+description = "Well-known paper-like light palette with precise muted accents."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["solarized", "light", "classic"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#FDF6E3"
+bg_secondary = "#EEE8D5"
+bg_tertiary = "#E6DFCC"
+bg_overlay = "#FDF6E3CC"
+fg_primary = "#586E75"
+fg_secondary = "#657B83"
+fg_muted = "#93A1A1"
+fg_inverse = "#FBFEF5"
+border = "#E6DFCC"
+border_subtle = "#EEE8D5"
+border_focus = "#268BD2"
+accent_primary = "#268BD2"
+accent_secondary = "#2AA198"
+accent_soft = "#D6E3E0"
+assistant_msg = "#268BD2"
+user_msg = "#6C71C4"
+tool_output = "#859900"
+shell_stdout = "#657B83"
+shell_stderr = "#DC322F"
+status_bg = "#EEE8D5"
+status_fg = "#586E75"
+status_accent = "#268BD2"
+input_bg = "#F3EDDA"
+input_fg = "#586E75"
+input_placeholder = "#93A1A1"
+selection_bg = "#BCCDCD"
+selection_fg = "#586E75"
+cursor = "#268BD2"
+link = "#268BD2"
+info = "#2AA198"
+success = "#859900"
+warning = "#B58900"
+error = "#DC322F"
+diff_add = "#859900"
+diff_remove = "#DC322F"
+diff_change = "#B58900"
+code_inline = "#268BD2"
+syntax_plain = "#586E75"
+syntax_comment = "#93A1A1"
+syntax_keyword = "#6C71C4"
+syntax_string = "#859900"
+syntax_number = "#B58900"
+syntax_function = "#268BD2"
+syntax_type = "#2AA198"
+syntax_variable = "#586E75"
+syntax_operator = "#2AA198"
+
+[ansi]
+black = "#FDF6E3"
+red = "#DC322F"
+green = "#859900"
+yellow = "#B58900"
+blue = "#268BD2"
+magenta = "#6C71C4"
+cyan = "#2AA198"
+white = "#586E75"
+bright_black = "#FDF8E9"
+bright_red = "#E04B48"
+bright_green = "#94A51F"
+bright_yellow = "#BE971F"
+bright_blue = "#4099D7"
+bright_magenta = "#7E82CB"
+bright_cyan = "#44ACA4"
+bright_white = "#657A80"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Solarized Light"
+
+[targets.iterm2]
+profile_name = "Solarized Light"
+
+[targets.ghostty]
+theme_name = "Solarized Light"
+
+[targets.alacritty]
+theme_name = "Solarized Light"
+

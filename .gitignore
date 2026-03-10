@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+dist/
+build/
+coverage/
+node_modules/
+packages/npm-shim/bin/codex-theme
+packages/npm-shim/bin/codex-theme.exe
+
+
+codex-theme
+codex-theme.exe

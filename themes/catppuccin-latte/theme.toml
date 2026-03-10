@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "catppuccin-latte"
+name = "Catppuccin Latte"
+family = "modern"
+version = "1.0.0"
+appearance = "light"
+description = "Creamy light palette with pastel accents and strong readability."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["catppuccin", "latte", "light"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#EFF1F5"
+bg_secondary = "#E6E9EF"
+bg_tertiary = "#DCE0E8"
+bg_overlay = "#EFF1F5CC"
+fg_primary = "#4C4F69"
+fg_secondary = "#5C5F77"
+fg_muted = "#7C7F93"
+fg_inverse = "#FAFBFC"
+border = "#DCE0E8"
+border_subtle = "#E6E9EF"
+border_focus = "#1E66F5"
+accent_primary = "#1E66F5"
+accent_secondary = "#EA76CB"
+accent_soft = "#C9D8F5"
+assistant_msg = "#1E66F5"
+user_msg = "#8839EF"
+tool_output = "#40A02B"
+shell_stdout = "#5C5F77"
+shell_stderr = "#D20F39"
+status_bg = "#E6E9EF"
+status_fg = "#4C4F69"
+status_accent = "#1E66F5"
+input_bg = "#E9ECF1"
+input_fg = "#4C4F69"
+input_placeholder = "#7C7F93"
+selection_bg = "#B2C5EB"
+selection_fg = "#4C4F69"
+cursor = "#1E66F5"
+link = "#1E66F5"
+info = "#179299"
+success = "#40A02B"
+warning = "#DF8E1D"
+error = "#D20F39"
+diff_add = "#40A02B"
+diff_remove = "#D20F39"
+diff_change = "#DF8E1D"
+code_inline = "#1E66F5"
+syntax_plain = "#4C4F69"
+syntax_comment = "#7C7F93"
+syntax_keyword = "#8839EF"
+syntax_string = "#40A02B"
+syntax_number = "#DF8E1D"
+syntax_function = "#1E66F5"
+syntax_type = "#179299"
+syntax_variable = "#4C4F69"
+syntax_operator = "#EA76CB"
+
+[ansi]
+black = "#EFF1F5"
+red = "#D20F39"
+green = "#40A02B"
+yellow = "#DF8E1D"
+blue = "#1E66F5"
+magenta = "#8839EF"
+cyan = "#179299"
+white = "#4C4F69"
+bright_black = "#F3F4F7"
+bright_red = "#D72C51"
+bright_green = "#57AB44"
+bright_yellow = "#E39C38"
+bright_blue = "#3978F6"
+bright_magenta = "#9651F1"
+bright_cyan = "#339FA5"
+bright_white = "#5A5D75"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Catppuccin Latte"
+
+[targets.iterm2]
+profile_name = "Catppuccin Latte"
+
+[targets.ghostty]
+theme_name = "Catppuccin Latte"
+
+[targets.alacritty]
+theme_name = "Catppuccin Latte"
+

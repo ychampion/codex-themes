@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "kanagawa"
+name = "Kanagawa"
+family = "modern"
+version = "1.0.0"
+appearance = "dark"
+description = "Ink-wash inspired Japanese palette with elegant subdued contrast."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["kanagawa", "ink", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#1F1F28"
+bg_secondary = "#26262F"
+bg_tertiary = "#2A2A37"
+bg_overlay = "#1F1F28CC"
+fg_primary = "#DCD7BA"
+fg_secondary = "#C8C093"
+fg_muted = "#727169"
+fg_inverse = "#0F1115"
+border = "#2A2A37"
+border_subtle = "#26262F"
+border_focus = "#7E9CD8"
+accent_primary = "#7E9CD8"
+accent_secondary = "#957FB8"
+accent_soft = "#303648"
+assistant_msg = "#7E9CD8"
+user_msg = "#957FB8"
+tool_output = "#76946A"
+shell_stdout = "#C8C093"
+shell_stderr = "#C34043"
+status_bg = "#26262F"
+status_fg = "#DCD7BA"
+status_accent = "#7E9CD8"
+input_bg = "#24242D"
+input_fg = "#DCD7BA"
+input_placeholder = "#727169"
+selection_bg = "#3C435A"
+selection_fg = "#DCD7BA"
+cursor = "#7E9CD8"
+link = "#7E9CD8"
+info = "#6A9589"
+success = "#76946A"
+warning = "#C0A36E"
+error = "#C34043"
+diff_add = "#76946A"
+diff_remove = "#C34043"
+diff_change = "#C0A36E"
+code_inline = "#7E9CD8"
+syntax_plain = "#DCD7BA"
+syntax_comment = "#727169"
+syntax_keyword = "#957FB8"
+syntax_string = "#76946A"
+syntax_number = "#C0A36E"
+syntax_function = "#7E9CD8"
+syntax_type = "#6A9589"
+syntax_variable = "#DCD7BA"
+syntax_operator = "#957FB8"
+
+[ansi]
+black = "#1F1F28"
+red = "#C34043"
+green = "#76946A"
+yellow = "#C0A36E"
+blue = "#7E9CD8"
+magenta = "#957FB8"
+cyan = "#6A9589"
+white = "#DCD7BA"
+bright_black = "#505057"
+bright_red = "#CA575A"
+bright_green = "#86A17C"
+bright_yellow = "#C8AE7F"
+bright_blue = "#8DA8DD"
+bright_magenta = "#A28EC1"
+bright_cyan = "#7CA297"
+bright_white = "#DFDAC0"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Kanagawa"
+
+[targets.iterm2]
+profile_name = "Kanagawa"
+
+[targets.ghostty]
+theme_name = "Kanagawa"
+
+[targets.alacritty]
+theme_name = "Kanagawa"
+

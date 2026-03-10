@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "dracula"
+name = "Dracula"
+family = "classic"
+version = "1.0.0"
+appearance = "dark"
+description = "Punchy purple-pink neon contrast with readable violet surfaces."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["dracula", "purple", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#282A36"
+bg_secondary = "#303341"
+bg_tertiary = "#3A3E4D"
+bg_overlay = "#282A36CC"
+fg_primary = "#F8F8F2"
+fg_secondary = "#E9E8F2"
+fg_muted = "#B8B6C9"
+fg_inverse = "#0F1115"
+border = "#3A3E4D"
+border_subtle = "#303341"
+border_focus = "#BD93F9"
+accent_primary = "#BD93F9"
+accent_secondary = "#FF79C6"
+accent_soft = "#433D59"
+assistant_msg = "#6272A4"
+user_msg = "#FF79C6"
+tool_output = "#50FA7B"
+shell_stdout = "#E9E8F2"
+shell_stderr = "#FF5555"
+status_bg = "#303341"
+status_fg = "#F8F8F2"
+status_accent = "#BD93F9"
+input_bg = "#2D303D"
+input_fg = "#F8F8F2"
+input_placeholder = "#B8B6C9"
+selection_bg = "#575173"
+selection_fg = "#F8F8F2"
+cursor = "#BD93F9"
+link = "#6272A4"
+info = "#8BE9FD"
+success = "#50FA7B"
+warning = "#F1FA8C"
+error = "#FF5555"
+diff_add = "#50FA7B"
+diff_remove = "#FF5555"
+diff_change = "#F1FA8C"
+code_inline = "#6272A4"
+syntax_plain = "#F8F8F2"
+syntax_comment = "#B8B6C9"
+syntax_keyword = "#FF79C6"
+syntax_string = "#50FA7B"
+syntax_number = "#F1FA8C"
+syntax_function = "#6272A4"
+syntax_type = "#8BE9FD"
+syntax_variable = "#F8F8F2"
+syntax_operator = "#FF79C6"
+
+[ansi]
+black = "#282A36"
+red = "#FF5555"
+green = "#50FA7B"
+yellow = "#F1FA8C"
+blue = "#6272A4"
+magenta = "#FF79C6"
+cyan = "#8BE9FD"
+white = "#F8F8F2"
+bright_black = "#575962"
+bright_red = "#FF6969"
+bright_green = "#65FB8B"
+bright_yellow = "#F3FB9A"
+bright_blue = "#7583AF"
+bright_magenta = "#FF89CD"
+bright_cyan = "#99ECFD"
+bright_white = "#F9F9F3"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Dracula"
+
+[targets.iterm2]
+profile_name = "Dracula"
+
+[targets.ghostty]
+theme_name = "Dracula"
+
+[targets.alacritty]
+theme_name = "Dracula"
+

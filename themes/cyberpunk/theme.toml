@@ -1,0 +1,99 @@
+schema = "https://codexthemes.dev/schemas/theme.schema.json"
+id = "cyberpunk"
+name = "Cyberpunk"
+family = "experimental"
+version = "1.0.0"
+appearance = "dark"
+description = "Neon magenta and cyan over pitch-black surfaces for dramatic sessions."
+author = "Codex Themes"
+license = "MIT"
+homepage = "https://github.com/ychampion/codex-themes"
+tags = ["cyberpunk", "neon", "dark"]
+codex_min_version = "0.1.0"
+
+[accessibility]
+min_contrast_body = 4.5
+min_contrast_ui = 3
+color_blind_safe = true
+
+[tokens]
+bg_primary = "#0B0F14"
+bg_secondary = "#101722"
+bg_tertiary = "#152033"
+bg_overlay = "#0B0F14CC"
+fg_primary = "#E7F7FF"
+fg_secondary = "#BFE8FF"
+fg_muted = "#7CA6C1"
+fg_inverse = "#0F1115"
+border = "#152033"
+border_subtle = "#101722"
+border_focus = "#00F5FF"
+accent_primary = "#00F5FF"
+accent_secondary = "#FF2BD6"
+accent_soft = "#09383E"
+assistant_msg = "#35A7FF"
+user_msg = "#FF2BD6"
+tool_output = "#72F1B8"
+shell_stdout = "#BFE8FF"
+shell_stderr = "#FF5C8A"
+status_bg = "#101722"
+status_fg = "#E7F7FF"
+status_accent = "#00F5FF"
+input_bg = "#0E141D"
+input_fg = "#E7F7FF"
+input_placeholder = "#7CA6C1"
+selection_bg = "#104F60"
+selection_fg = "#E7F7FF"
+cursor = "#00F5FF"
+link = "#35A7FF"
+info = "#00F5FF"
+success = "#72F1B8"
+warning = "#FFD166"
+error = "#FF5C8A"
+diff_add = "#72F1B8"
+diff_remove = "#FF5C8A"
+diff_change = "#FFD166"
+code_inline = "#35A7FF"
+syntax_plain = "#E7F7FF"
+syntax_comment = "#7CA6C1"
+syntax_keyword = "#FF2BD6"
+syntax_string = "#72F1B8"
+syntax_number = "#FFD166"
+syntax_function = "#35A7FF"
+syntax_type = "#00F5FF"
+syntax_variable = "#E7F7FF"
+syntax_operator = "#FF2BD6"
+
+[ansi]
+black = "#0B0F14"
+red = "#FF5C8A"
+green = "#72F1B8"
+yellow = "#FFD166"
+blue = "#35A7FF"
+magenta = "#FF2BD6"
+cyan = "#00F5FF"
+white = "#E7F7FF"
+bright_black = "#414448"
+bright_red = "#FF7098"
+bright_green = "#83F3C1"
+bright_yellow = "#FFD778"
+bright_blue = "#4DB2FF"
+bright_magenta = "#FF44DB"
+bright_cyan = "#1FF6FF"
+bright_white = "#E9F8FF"
+
+[targets.codex]
+config_patch = { mode = "merge", path = "config/codex.toml" }
+
+[targets.windows_terminal]
+scheme_name = "Cyberpunk"
+
+[targets.iterm2]
+profile_name = "Cyberpunk"
+
+[targets.ghostty]
+theme_name = "Cyberpunk"
+
+[targets.alacritty]
+theme_name = "Cyberpunk"
+
