@@ -49,6 +49,7 @@ func NewRootCommand(options Options) *cobra.Command {
 	root.PersistentFlags().StringArrayVar(&themeDirs, "theme-dir", themeDirs, "Additional theme search directory")
 	root.PersistentFlags().StringVar(&codexHome, "codex-home", "", "Override Codex config root")
 	root.PersistentFlags().BoolVar(&noColor, "no-color", false, "Disable colorized preview output")
+	root.AddCommand(newSetupCommand(&themeDirs, &codexHome, &noColor))
 
 	root.AddCommand(&cobra.Command{
 		Use:   "list",

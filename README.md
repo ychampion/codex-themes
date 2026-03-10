@@ -7,7 +7,7 @@ Beautiful terminal identities, one command away.
 ## What ships today
 
 - Semantic theme manifest format in `theme.toml`
-- Go CLI with `list`, `preview`, `apply`, `sync`, `doctor`, `current`, `rollback`, `validate`, and `export-terminal`
+- Go CLI with `setup`, `list`, `preview`, `apply`, `sync`, `doctor`, `current`, `rollback`, `validate`, and `export-terminal`
 - Safe config backups and rollback support
 - Terminal companion exports for Windows Terminal, iTerm2, Ghostty, Alacritty, and ANSI JSON
 - Accessibility-aware theme validation
@@ -43,6 +43,34 @@ codex-theme preview amber-nocturne
 codex-theme apply amber-nocturne --export-terminal ghostty,alacritty
 codex-theme current
 codex-theme doctor
+```
+
+## Windows one-command setup
+
+If you use Codex inside Windows Terminal, the fastest way to try the project is:
+
+```powershell
+codex-theme setup
+```
+
+What it does:
+
+- opens a guided theme picker in PowerShell
+- shows a live preview before applying
+- writes the managed `[codex_themes]` section into `~/.codex/config.toml`
+- patches Windows Terminal `settings.json`
+- installs the selected color scheme and points the default profile at it
+
+After setup finishes, open a new Windows Terminal tab and run:
+
+```powershell
+codex
+```
+
+If you want a non-interactive version:
+
+```powershell
+codex-theme setup --theme amber-nocturne
 ```
 
 ## Theme authoring
