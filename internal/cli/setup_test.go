@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 
@@ -19,7 +20,8 @@ func TestSetupCommandAppliesThemeAndWindowsTerminal(t *testing.T) {
 	}
 	codexHome := filepath.Join(t.TempDir(), ".codex")
 	settingsPath := filepath.Join(t.TempDir(), "settings.json")
-	if err := os.WriteFile(settingsPath, []byte(`{"profiles":{"defaults":{}},"schemes":[]}`), 0o600); err != nil {
+	const initialSettings = `{"profiles":{"defaults":{}},"schemes":[]}`
+	if err := os.WriteFile(settingsPath, []byte(initialSettings), 0o600); err != nil {
 		t.Fatalf("WriteFile() error = %v", err)
 	}
 
@@ -57,8 +59,12 @@ func TestSetupCommandAppliesThemeAndWindowsTerminal(t *testing.T) {
 	if err != nil {
 		t.Fatalf("ReadFile(settings) error = %v", err)
 	}
-	if !strings.Contains(string(settingsBytes), `"colorScheme": "Amber Nocturne"`) {
-		t.Fatalf("settings missing colorScheme\nsettings:\n%s", string(settingsBytes))
+	if runtime.GOOS == "windows" {
+		if !strings.Contains(string(settingsBytes), `"colorScheme": "Amber Nocturne"`) {
+			t.Fatalf("settings missing colorScheme\nsettings:\n%s", settingsBytes)
+		}
+	} else if string(settingsBytes) != initialSettings {
+		t.Fatalf("unexpected change to Windows Terminal settings on %s:\n%s", runtime.GOOS, settingsBytes)
 	}
 	if got := stdout.String(); !strings.Contains(strings.ToLower(got), "setup complete") {
 		t.Fatalf("stdout missing success message\nstdout:\n%s", got)

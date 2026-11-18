@@ -41,6 +41,8 @@ There is also a shorter wrapper from the repo root:
 
 ### From source
 
+Use Go 1.26 or newer. The binary includes the bundled themes.
+
 ```bash
 go install github.com/ychampion/codex-themes/cmd/codex-theme@latest
 ```
