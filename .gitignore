@@ -8,5 +8,5 @@ packages/npm-shim/bin/codex-theme
 packages/npm-shim/bin/codex-theme.exe
 
 
-codex-theme
-codex-theme.exe
+/codex-theme
+/codex-theme.exe

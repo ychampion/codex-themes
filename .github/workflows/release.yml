@@ -8,6 +8,8 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    outputs:
+      publish-npm: ${{ steps.npm-check.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -15,6 +17,15 @@ jobs:
           go-version-file: go.mod
       - name: Run tests
         run: go test ./...
+      - name: Check whether npm publishing is configured
+        id: npm-check
+        shell: bash
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [[ -n "$NPM_TOKEN" ]]; then
+            echo 'enabled=true' >> "$GITHUB_OUTPUT"
+          fi
 
   goreleaser:
     needs: verify
@@ -37,8 +48,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   npm:
-    needs: goreleaser
-    if: ${{ secrets.NPM_TOKEN != '' }}
+    needs: [verify, goreleaser]
+    if: ${{ needs.verify.outputs.publish-npm == 'true' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
